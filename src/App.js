@@ -12,11 +12,30 @@ const Button = styled.button`
   border: 2px solid black;
 `;
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  flex-direction: column;
+`;
+
 function App() {
+
+  const apiRequest = async () => {
+    const request = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+
+    const phrase = await request.json();
+    console.log(phrase[0])
+  }
+
   return (
-    <Button>
-      Get new phrase
-    </Button>
+    <Container>
+      <Button
+        onClick={apiRequest}
+      >
+        Get new phrase
+      </Button>
+    </Container>
   );
 }
 
